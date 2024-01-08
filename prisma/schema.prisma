@@ -1,5 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
@@ -18,4 +16,28 @@ model User{
   hashedRefreshToken String?
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+}
+
+model Quizz {
+  id Int @id @default(autoincrement())
+  name String
+  InviteCode String @unique
+  numbersOfQuestions Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Question {
+  id String @id 
+  content String
+  type String
+}
+
+
+model Answer {
+  id Int @id @default(autoincrement())  
+  questionId String
+  content String
+  isTrue Boolean
+  position Int?
 }
