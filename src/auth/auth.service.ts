@@ -5,8 +5,7 @@ import {
 } from '@nestjs/common';
 import { SignUpInput } from './dto/signup-input';
 import { SignInInput } from './dto/signin-input';
-import { UpdateAuthInput } from './dto/update-auth.input';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import * as argon from 'argon2';
@@ -84,7 +83,7 @@ export class AuthService {
         email,
       },
       {
-        expiresIn: '10s',
+        expiresIn: '1h',
         secret: this.configService.get('ACCESS_TOKEN_SECRET'),
       },
     );
@@ -123,5 +122,29 @@ export class AuthService {
       data: { hashedRefreshToken: null },
     });
     return { loggedOut: true };
+  }
+
+  async getNewTokens(userId: number, rt: string) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+
+    if (!user) {
+      throw new ForbiddenException('No such a user');
+    }
+    console.log(user.hashedRefreshToken);
+    console.log(rt);
+
+    const ifTokenMatch = await argon.verify(user.hashedRefreshToken, rt);
+
+    if (!ifTokenMatch) {
+      throw new ForbiddenException('tokens do not match');
+    }
+
+    const { accessToken, refreshToken } = await this.createTokens(
+      user.id,
+      user.email,
+    );
+
+    await this.updateRefreshToken(user.id, refreshToken);
+    return { accessToken, refreshToken, user };
   }
 }
