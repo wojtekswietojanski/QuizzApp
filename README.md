@@ -18,7 +18,7 @@ $ docker compose up
 $ npx prisma migrate dev
 
 # Starting the app
-$ npm run start:prod
+$ npm run start
 ```
 
 ## Test
