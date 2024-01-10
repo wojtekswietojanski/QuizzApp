@@ -13,6 +13,7 @@ import { ChechQuizzInput } from './dto/checkQuiz-input';
 export class QuizzResolver {
   constructor(private readonly quizzService: QuizzService) {}
 
+  @Public()
   @Mutation(() => QuizzResponse)
   createQuizz(@Args('quizzInput') quizzInput: QuizzInput) {
     return this.quizzService.createQuizz(quizzInput);

@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '@src/prisma/prisma.service';
 import { QuizzInput } from './dto/quizzCreate-input';
 import { FetchQuizzInput } from './dto/fetchQuizz-input';
@@ -7,10 +6,7 @@ import { ChechQuizzInput } from './dto/checkQuiz-input';
 
 @Injectable()
 export class QuizzService {
-  constructor(
-    private prisma: PrismaService,
-    private configService: ConfigService,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   async createQuizz(quizzInput: QuizzInput) {
     // Checking if invite code is unique
@@ -64,16 +60,12 @@ export class QuizzService {
 
         for (let x = 0; x < quizzInput.answers[i].length; x++) {
           const answer = quizzInput.answers[i][x];
-          let answerPosition;
-          if (!answer.position) {
-            answerPosition = null;
-          }
           await this.prisma.answer.create({
             data: {
               questionId: questionId,
               isTrue: answer.isTrue,
               content: answer.content,
-              position: answerPosition,
+              position: answer.position,
             },
           });
         }
@@ -183,11 +175,13 @@ export class QuizzService {
             isTrue: true,
           },
         });
+
         if (trueAnswersCount != providedAnswers.length) {
           pointsObtained = 0;
         }
         for (let index = 0; index < providedAnswers.length; index++) {
           const element = providedAnswers[index];
+
           let ifMatch = await this.prisma.answer.findFirst({
             where: {
               questionId: questionCode,

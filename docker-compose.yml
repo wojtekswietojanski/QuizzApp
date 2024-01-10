@@ -7,3 +7,11 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=123
       - POSTGRES_DB=nestjs_graphql_prisma
+  test-db:
+    image: postgres:latest
+    ports:
+      - '5434:5434'
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=nestjs_graphql_prisma

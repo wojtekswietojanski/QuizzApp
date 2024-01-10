@@ -34,7 +34,6 @@ export class AuthService {
         user.email,
       );
       await this.updateRefreshToken(user.id, refreshToken);
-      // console.log({ accessToken, refreshToken, user });
       return { accessToken, refreshToken, user };
     } catch (error) {
       // handling not unique email input
@@ -130,8 +129,6 @@ export class AuthService {
     if (!user) {
       throw new ForbiddenException('No such a user');
     }
-    console.log(user.hashedRefreshToken);
-    console.log(rt);
 
     const ifTokenMatch = await argon.verify(user.hashedRefreshToken, rt);
 
