@@ -37,10 +37,12 @@ The API should have the following capabilities:
   - Create a new quiz ✓
   - Get questions for a quizz ✓
   - Check answers ✓
+
 The quizz questions can be of a diffirent type:
   - single/multiple correct answer/s ✓
   - sort answers ✓
   - plain text answer ✓
+
 Other requriements:
   - Implement a GraphQL-based API using NestJS and TypeScript. ✓
   - Cover the relevant parts of the code with unit tests .✓
