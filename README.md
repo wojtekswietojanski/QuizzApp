@@ -47,7 +47,6 @@ Other requriements:
   - Implement a GraphQL-based API using NestJS and TypeScript. ✓
   - Cover the relevant parts of the code with unit tests .✓
   - Use the PostgreSQL database and Docker to run it. ✓
-  - No authentication is required. ✓
   - Provide instructions on how to run the application. ✓
   - Provide examples of GraphQL queries and mutations for each operation. ✓
   - All quizzes, including questions and answers, must be created within a single GraphQL mutation and a corresponding database transaction. Avoid splitting this operation into three separate mutations. ✓
