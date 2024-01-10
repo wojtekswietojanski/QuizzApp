@@ -62,11 +62,25 @@ Other requriements:
 
 ## Examples of graphQL mutations for each operation:
 Create a quizz:
+![image](https://github.com/wojtekswietojanski/QuizzApp/assets/125148871/7b4779da-c25d-4503-b517-18d0596f70c6)
+
 Fetch a quizz:
+![image](https://github.com/wojtekswietojanski/QuizzApp/assets/125148871/b10563f1-ca96-44c8-bdce-54ab4bb353bd)
+
 Check answers for a quizz:
+![image](https://github.com/wojtekswietojanski/QuizzApp/assets/125148871/90d64d8b-c881-4f90-bb45-5b40e0e07a9b)
+
 Registration:
+![image](https://github.com/wojtekswietojanski/QuizzApp/assets/125148871/996906b0-f125-426c-8079-30b02fcc2ffd)
+
 Login:
-Getting new access tokens (they are needed for mutations that are not mark as public):
+![image](https://github.com/wojtekswietojanski/QuizzApp/assets/125148871/4a96922f-173a-44c1-aeaf-22ff9585d86d)
+
+Getting new access tokens (they are needed for mutations that are not marked as public):
+![image](https://github.com/wojtekswietojanski/QuizzApp/assets/125148871/ecc833cd-65e6-4517-b3d1-173293296e94)
+
 Logout:
 
-Nest is [MIT licensed](LICENSE).
+![image](https://github.com/wojtekswietojanski/QuizzApp/assets/125148871/4174e7d8-eec7-4a60-9369-f07db5a71821)
+
+
