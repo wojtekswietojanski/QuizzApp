@@ -202,6 +202,7 @@ export class QuizzService {
           const element = providedAnswers[index];
           let ifMatch = await this.prisma.answer.findFirst({
             where: {
+              content: element.content,
               questionId: questionCode,
               position: element.position,
             },
